@@ -55,7 +55,7 @@ for qwe=5:10
             horizon,terminal_horizon,Space_size,terminal_set_function,target_velocity,max_velocity,min_distance,safe_distance,weigths,1);
         needed_time(qwe-4) =needed_time(qwe-4) +toc;
         %[state,obstacles,measurments]=simulate(input);
-        [state,obstacles]=system_model(input,state,obstacles,unbiased_noises);
+        [state,obstacles]=system_model(input,state,obstacles);
         
     
         %TO DO - Add noise
