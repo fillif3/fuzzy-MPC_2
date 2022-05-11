@@ -1,4 +1,4 @@
-function [outputArg1,outputArg2] = plot_function(size,max,func,zero_second_input_flag)
+function plot_function(size,max,func,zero_second_input_flag)
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
 t=0:0.1:max;

@@ -50,7 +50,7 @@ for qwe=5:10
     for i=1:NUMBER_OF_ITERATIONS
         tic
         [input,path]=fuzzy_MPC_path_planning(state,obstacles,destination,system_model,NUMBER_OF_INPUTS,...
-            horizon,terminal_horizon,Space_size,terminal_set_function,target_velocity,max_velocity,min_distance,safe_distance,weigths,0.1);
+            horizon,terminal_horizon,Space_size,terminal_set_function,target_velocity,max_velocity,min_distance,safe_distance,weigths,1);
         needed_time(qwe-4) =needed_time(qwe-4) +toc;
         %[state,obstacles,measurments]=simulate(input);
         state=system_model(input,state,obstacles);
