@@ -3,8 +3,6 @@ function [input,path]=fuzzy_MPC_path_planning(state,obstacle,destination,system_
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 % Preapre fuzzy cost function
-horizon=10;
-terminal_horizon=1;
 fuzzy_cost_destination= @(state) fuzzy_cost_gauss(norm(destination-state),0,10)^weigths(1);
 fuzzy_cost_velocity= @(input) fuzzy_cost_trapezoid(norm(input),target_velocity,max_linear_velocity)^weigths(2);
 fuzzy_cost_obstacles= @(state,obstacle)(1- fuzzy_cost_trapezoid(norm(state-obstacle),min_disttance,safe_distance))^weigths(3);
@@ -21,7 +19,9 @@ nonlocon_function = @(trajectory) check_if_in_terminal_set(trajectory,state,term
 
 [path,FVAL,EXITFLAG,OUTPUT] = ga(full_cost_function,horizon*NUMBER_OF_INPUTS,[],[],[],[],lb,ub,nonlocon_function);
 disp(FVAL)
-disp(OUTPUT)
+if EXITFLAG~=1
+    error(OUTPUT)
+end
 %plot_system(path,state,horizon,NUMBER_OF_INPUTS,system_model)
 input=path(1:NUMBER_OF_INPUTS)';
 

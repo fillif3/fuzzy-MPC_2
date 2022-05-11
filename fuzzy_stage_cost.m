@@ -3,8 +3,8 @@ function cost = fuzzy_stage_cost(input,state,obstacles,fuzzy_cost_destination,fu
 %   Detailed explanation goes here
 cost = fuzzy_cost_destination(state);
 cost=min(cost,fuzzy_cost_velocity(input));
-for i=1:length(obstacles)
-    cost=min(cost,fuzzy_cost_obstacles(state,obstacles{1}));
+for obstacle=obstacles
+    cost=min(cost,fuzzy_cost_obstacles(state,obstacle{1}));
 end
 cost=log(cost);
 end
